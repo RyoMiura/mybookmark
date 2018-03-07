@@ -3,5 +3,5 @@ export class Bookmark {
     public title: string;
     public url: string;
     public overview: string;
-    public tag: string[];
+    public tags: string[];
 }
