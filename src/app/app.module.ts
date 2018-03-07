@@ -7,7 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { StartPageComponent } from './start-page/start-page.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { BookmarkPageComponent } from './start-page/bookmark-page/bookmark-page.component';
+import { BookmarkPageComponent } from './bookmark-page/bookmark-page.component';
 
 
 @NgModule({
