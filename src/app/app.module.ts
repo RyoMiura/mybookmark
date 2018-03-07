@@ -5,7 +5,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { StartWindowComponent } from './start-window/start-window.component';
+import { StartPageComponent } from './start-page/start-page.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -13,10 +14,11 @@ import { StartWindowComponent } from './start-window/start-window.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    StartWindowComponent
+    StartPageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
