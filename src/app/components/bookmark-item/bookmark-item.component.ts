@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 
-import { Bookmark } from '../mock/bookmark';
+import { Bookmark } from '@app/mock/bookmark';
 
 @Component({
   selector: 'app-bookmark-item',
