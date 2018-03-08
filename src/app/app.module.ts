@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './/app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BookmarkService } from './service/bookmark.service';
 
@@ -11,6 +12,8 @@ import { StartPageComponent } from '@app/components/start-page/start-page.compon
 import { BookmarkPageComponent } from '@app/components/bookmark-page/bookmark-page.component';
 import { BookmarkItemComponent } from '@app/components/bookmark-item/bookmark-item.component';
 import { BookmarkListItemComponent } from '@app/components/bookmark-list-item/bookmark-list-item.component';
+import { AddBookmarkPageComponent } from './components/add-bookmark-page/add-bookmark-page.component';
+import { AddBookmarkFormItemComponent } from './components/add-bookmark-form-item/add-bookmark-form-item.component';
 
 
 @NgModule({
@@ -21,11 +24,15 @@ import { BookmarkListItemComponent } from '@app/components/bookmark-list-item/bo
     StartPageComponent,
     BookmarkPageComponent,
     BookmarkItemComponent,
-    BookmarkListItemComponent
+    BookmarkListItemComponent,
+    AddBookmarkPageComponent,
+    AddBookmarkFormItemComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     BookmarkService
