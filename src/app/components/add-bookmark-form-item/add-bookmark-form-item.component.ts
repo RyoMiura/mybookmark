@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { BookmarkService } from '@app/service/bookmark/bookmark.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-bookmark-form-item',
@@ -9,7 +11,7 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 export class AddBookmarkFormItemComponent implements OnInit {
   public bookmarkForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private router: Router, private bookmarkService: BookmarkService) { 
   }
 
   ngOnInit() {
@@ -17,7 +19,10 @@ export class AddBookmarkFormItemComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.bookmarkForm.value);
+    var newBookmark = this.bookmarkForm.value;
+    newBookmark.id = null;
+    this.bookmarkService.createBookmark(newBookmark)
+      .subscribe(() => this.router.navigate(["/bookmarks"]));
   }
 
   formBuild(): void {

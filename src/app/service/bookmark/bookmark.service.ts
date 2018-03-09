@@ -18,4 +18,10 @@ export class BookmarkService {
   public findBookmark(id: number): Observable<Bookmark> {
     return of(BOOKMARKS.find(bookmark => bookmark.id === id));
   }
+
+  public createBookmark(bookmark: Bookmark): Observable<boolean> {
+    bookmark.id = BOOKMARKS.length;
+    BOOKMARKS.push(bookmark);
+    return of(true);
+  }
 }
