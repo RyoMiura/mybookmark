@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { BookmarkService } from './service/bookmark.service';
+import { BookmarkService } from '@app/service/bookmark/bookmark.service';
+import { TagService } from '@app/service/tag/tag.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from '@app/components/header/header.component';
@@ -35,7 +36,8 @@ import { AddBookmarkFormItemComponent } from './components/add-bookmark-form-ite
     ReactiveFormsModule
   ],
   providers: [
-    BookmarkService
+    BookmarkService,
+    TagService
   ],
   bootstrap: [AppComponent]
 })

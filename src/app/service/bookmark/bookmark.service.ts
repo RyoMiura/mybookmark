@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
-import { Bookmark } from '../mock/bookmark';
-import { BOOKMARKS } from '../mock/mock-bookmarks';
+import { Bookmark } from '@app/model/bookmark';
+import { BOOKMARKS } from '@app/mock/mock-bookmarks';
 
 @Injectable()
 export class BookmarkService {

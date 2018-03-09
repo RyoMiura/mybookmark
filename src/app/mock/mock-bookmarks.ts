@@ -1,4 +1,4 @@
-import { Bookmark } from './bookmark';
+import { Bookmark } from '@app/model/bookmark';
 
 export const BOOKMARKS = [
     { id:0, title: 'google', url: 'https://www.google.co.jp/', overview: 'google search engin', tags: ['search engin', 'google'] },
