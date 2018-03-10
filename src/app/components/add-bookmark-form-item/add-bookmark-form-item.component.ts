@@ -22,19 +22,23 @@ export class AddBookmarkFormItemComponent implements OnInit {
   ngOnInit() {
     this.formBuild();
     this.getTaglist();
+
     this.addedTags = [];
   }
 
   onSubmit(): void {
-    var newBookmark: Bookmark = {
-      id: null,
-      title: this.bookmarkForm.get('title').value,
-      url: this.bookmarkForm.get('url').value,
-      overview: this.bookmarkForm.get('overview').value,
-      tags: this.addedTags
+    console.log(this.bookmarkForm.valid);
+    if (this.bookmarkForm.valid) {
+      var newBookmark: Bookmark = {
+        id: null,
+        title: this.bookmarkForm.get('title').value,
+        url: this.bookmarkForm.get('url').value,
+        overview: this.bookmarkForm.get('overview').value,
+        tags: this.addedTags
+      }
+      this.bookmarkService.createBookmark(newBookmark)
+        .subscribe(() => this.router.navigate(["/bookmarks"]));
     }
-    this.bookmarkService.createBookmark(newBookmark)
-      .subscribe(() => this.router.navigate(["/bookmarks"]));
   }
 
   formBuild(): void {
@@ -42,7 +46,7 @@ export class AddBookmarkFormItemComponent implements OnInit {
       title: ['', [Validators.required, Validators.maxLength(50)]],
       url: ['', [Validators.required]],
       overview: ['', [Validators.required, Validators.maxLength(500)]],
-      tag: ['', [Validators.required]]
+      tag: ['', []]
     });
   }
 
