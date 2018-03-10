@@ -16,7 +16,13 @@
     <div class="form-group">
       <label for="tag">タグ</label>
       <input id="tag" name="tag" type="text" formControlName="tag">
+      <button name="add" type="button" (click)="addTag()">add tag</button>
+      <ul>
+          <!-- <li>aaaa</li>
+          <li>aaaa</li> -->
+          <li *ngFor="let tag of addedTags">{{ tag.name }}</li>
+      </ul>
     </div>
-    <button type="submit">追加</button>
+    <button type="submit">submit</button>
   </form>
 </div>

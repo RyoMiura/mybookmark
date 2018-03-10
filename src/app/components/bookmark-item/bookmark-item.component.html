@@ -3,6 +3,6 @@
   <a href="{{ bookmark.url }}">{{ bookmark.title }}</a>
   <p>{{ bookmark.overview }}</p>
   <ul>
-    <li *ngFor="let tag of bookmark.tags">{{ tag }}</li>
+    <li *ngFor="let tag of bookmark.tags">{{ tag.name }}</li>
   </ul>
 </div>
