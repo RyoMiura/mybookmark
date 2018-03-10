@@ -13,6 +13,7 @@ import { TagService } from '@app/service/tag/tag.service';
 })
 export class AddBookmarkFormItemComponent implements OnInit {
   public bookmarkForm: FormGroup;
+  public taglist: Tag[];
   public addedTags: Tag[];
 
   constructor(private fb: FormBuilder, private router: Router, private bookmarkService: BookmarkService, private tagService: TagService) {
@@ -20,8 +21,8 @@ export class AddBookmarkFormItemComponent implements OnInit {
 
   ngOnInit() {
     this.formBuild();
+    this.getTaglist();
     this.addedTags = [];
-    // this.linksModelAndFormValue();
   }
 
   onSubmit(): void {
@@ -45,18 +46,23 @@ export class AddBookmarkFormItemComponent implements OnInit {
     });
   }
 
-  addTag(): void {
-    var this_ = this;
+  getTaglist(): void {
     this.tagService.findTags()
-      .subscribe(function (tags) {
-        var targetTagName: string = this_.bookmarkForm.get('tag').value;
-        var inputedTag = tags.find(tag => tag.name === targetTagName);
-        if (inputedTag) {
-          this_.addedTags.push(inputedTag);
-        }
-        // this_.addedTags.push(tags.find(tag => tag.name === targetTagName));
-        this_.bookmarkForm.get('tag').reset();
-      });
+      .subscribe(tags => this.taglist = tags);
+  }
+
+  addTag(): void {
+    var targetTagName: string = this.bookmarkForm.get('tag').value;
+    var inputedTag = this.taglist.find(tag => tag.name === targetTagName);
+    var sameAddedTag = this.addedTags.find(tag => tag.name === targetTagName);
+    if (inputedTag && !sameAddedTag) {
+      this.addedTags.push(inputedTag);
+    }
+    this.bookmarkForm.get('tag').reset();
+  }
+
+  removeTag(index: number) {
+    this.addedTags.splice(index, 1);
   }
 
 }
