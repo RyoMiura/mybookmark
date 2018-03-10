@@ -6,4 +6,5 @@ export class Bookmark {
     public url: string;
     public overview: string;
     public tags: Tag[];
+    public referedCount: number;
 }

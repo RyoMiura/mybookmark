@@ -34,7 +34,8 @@ export class AddBookmarkFormItemComponent implements OnInit {
         title: this.bookmarkForm.get('title').value,
         url: this.bookmarkForm.get('url').value,
         overview: this.bookmarkForm.get('overview').value,
-        tags: this.addedTags
+        tags: this.addedTags,
+        referedCount: 0
       }
       this.bookmarkService.createBookmark(newBookmark)
         .subscribe(() => this.router.navigate(["/bookmarks"]));

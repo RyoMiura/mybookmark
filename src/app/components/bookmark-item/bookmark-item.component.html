@@ -1,6 +1,6 @@
 <div>
   <p>{{ bookmark.id }}</p>
-  <a href="{{ bookmark.url }}">{{ bookmark.title }}</a>
+  <a href="{{ bookmark.url }}" target="_blank">{{ bookmark.title }}</a>
   <p>{{ bookmark.overview }}</p>
   <ul>
     <li *ngFor="let tag of bookmark.tags">{{ tag.name }}</li>
