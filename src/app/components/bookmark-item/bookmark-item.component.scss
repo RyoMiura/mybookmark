@@ -1,5 +1,73 @@
-div {
-    border: solid 1px black;
+@import '~assets/scss/palette';
+
+.bookmark-content {
     padding: 10px 10px;
     margin: 10px 10px;
+    box-shadow: 1px 1px 1px 2px rgba($divider-color, 0.5);
+
+    .link {
+        text-decoration: none;
+        font-size: 20px;
+        &:link {
+            color: $primary-color;
+        }
+
+        &:visited {
+            color: $primary-color;
+        }
+
+        &:hover {
+            color: $primary-color-light;
+        }
+    }
+
+    .url-path {
+        margin: 0;
+        font-size: 15px;
+        color: $secondary-text-color;
+    }
+
+    ul.tag {
+        display: flex;
+
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            margin: 2px 5px;
+            padding: 2px;
+
+            border: solid 1px $primary-color;
+            border-radius: 10px;
+
+            font-size: 13px;
+            color: $primary-color;
+
+            a {
+                display: block;
+                text-decoration: none;
+                &:link {
+                    color: $primary-color;
+                }
+                &:visited {
+                    color: $primary-color;                    
+                }
+                &:hover {
+                    color: $primary-color-text;
+                }
+            }
+
+            &:hover {
+                background: $primary-color;
+                color: $primary-color-text;
+            }
+
+        }
+    }
+
+    .more-detail {
+        display: none;
+    }
+    
 }

@@ -46,7 +46,7 @@ export class AddBookmarkFormItemComponent implements OnInit {
     this.bookmarkForm = this.fb.group({
       title: ['', [Validators.required, Validators.maxLength(50)]],
       url: ['', [Validators.required]],
-      overview: ['', [Validators.required, Validators.maxLength(500)]],
+      overview: ['', [Validators.maxLength(300)]],
       tag: ['', []]
     });
   }
@@ -54,6 +54,10 @@ export class AddBookmarkFormItemComponent implements OnInit {
   getTaglist(): void {
     this.tagService.findTags()
       .subscribe(tags => this.taglist = tags);
+  }
+
+  openAddTagForm(): void {
+
   }
 
   addTag(): void {

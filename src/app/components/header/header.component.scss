@@ -1,6 +1,43 @@
-header {
-    width: 100%;
-    height: 50px;
+@import '~assets/scss/palette';
 
-    background: aqua;
+div {
+    position: absolute;
+    height: 100%;
+    &.app-title {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        span {
+            font-size: 25px;
+        }
+    }
+
+    &.app-menu {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 70%;
+        right: 0;
+        
+        ul {
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+            li {
+                list-style-type: none;
+                margin: 0 8px;
+                a {
+                    text-decoration: none;
+                    &:link {
+                        color: $primary-color-text;
+                    }
+                    &:visited {
+                        color: $primary-color-text;
+                    }
+                }
+            }
+        }
+    }
 }

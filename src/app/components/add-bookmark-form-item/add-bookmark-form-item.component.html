@@ -2,43 +2,78 @@
   <form [formGroup]="bookmarkForm" (ngSubmit)="onSubmit()" autocomplete="off">
 
     <div class="form-group">
-      <label for="title">タイトル</label>
-      <input id="title" name="title" type="text" formControlName="title">
+      <div class="label-area">
+        <label for="title">タイトル</label>
+      </div>
+      <div class="input-area">
+        <input id="title" name="title" type="text" formControlName="title" placeholder="MyBookmark" [class.error]="bookmarkForm.get('title').invalid && (bookmarkForm.get('title').dirty || bookmarkForm.get('title').touched)">
+      </div>
       <div *ngIf="bookmarkForm.get('title').invalid && (bookmarkForm.get('title').dirty || bookmarkForm.get('title').touched)">
-        error
+        <!-- error message etc. -->
       </div>
     </div>
 
     <div class="form-group">
-      <label for="url">URL</label>
-      <input id="url" name="url" type="text" formControlName="url">
+      <div class="label-area">
+        <label for="url">URL</label>
+      </div>
+      <div class="input-area">
+        <input id="url" name="url" type="text" formControlName="url" placeholder="http://mybookmark.com" [class.error]="bookmarkForm.get('url').invalid && (bookmarkForm.get('url').dirty || bookmarkForm.get('url').touched)">
+      </div>
       <div *ngIf="bookmarkForm.get('url').invalid && (bookmarkForm.get('url').dirty || bookmarkForm.get('url').touched)">
-        error
+        <!-- error message etc. -->
       </div>
     </div>
 
     <div class="form-group">
-      <label for="overview">概要</label>
-      <input id="overview" name="overview" type="textarea" formControlName="overview">
+      <div class="label-area">
+        <label for="overview">概要</label>
+      </div>
+      <div class="input-area">
+        <textarea id="overview" name="overview" formControlName="overview" [class.error]="bookmarkForm.get('overview').invalid && (bookmarkForm.get('overview').dirty || bookmarkForm.get('overview').touched)"></textarea>
+      </div>
       <div *ngIf="bookmarkForm.get('overview').invalid && (bookmarkForm.get('overview').dirty || bookmarkForm.get('overview').touched)">
-        error
       </div>
     </div>
 
     <div class="form-group">
-      <label for="tag">タグ</label>
-      <input id="tag" name="tag" type="text" list="taglist" formControlName="tag">
-      <datalist id="taglist">
-        <option *ngFor="let tag of taglist" value="{{ tag.name }}"></option>
-      </datalist>
-      <button name="addTag" type="button" (click)="addTag()">add tag</button>
-      <ul>
-        <li *ngFor="let tag of addedTags; let i = index">
-          <span>{{ tag.name }}</span>
-          <button name="removeTag" type="button" (click)="removeTag(i)">remove</button>
-        </li>
-      </ul>
+      <div class="label-area">
+        <label>タグ</label>
+        <span (click)="openAddTagForm()">タグ編集</span>
+      </div>
+      <div class="input-area">
+        <div class="tag-list">
+          <ul>
+            <li *ngFor="let tag of addedTags">
+              <span>{{ tag.name }}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="tag-form">
+          <div class="add-new-tag">
+            <input id="tag" name="tag" type="text" list="taglist" formControlName="tag">
+            <button name="addTag" type="button" (click)="addTag()">追加</button>
+            <datalist id="taglist">
+              <option *ngFor="let tag of taglist" value="{{ tag.name }}"></option>
+            </datalist>
+          </div>
+          <ul class="edited-tag" *ngFor="let tag of addedTags; let i = index">
+            <li>
+              <span>{{ tag.name }}</span>
+              <button name="removeTag" type="button" (click)="removeTag(i)">削除</button>
+            </li>
+          </ul>
+          <!-- <input id="tag" name="tag" type="text" list="taglist" formControlName="tag">
+          <datalist id="taglist">
+            <option *ngFor="let tag of taglist" value="{{ tag.name }}"></option>
+          </datalist>
+          <button name="addTag" type="button" (click)="addTag()">add tag</button> -->
+        </div>
+
+        <!-- <button name="removeTag" type="button" (click)="removeTag(i)">remove</button> -->
+      </div>
     </div>
-    <button type="submit">submit</button>
+
+    <button class="submit" type="submit">submit</button>
   </form>
 </div>
