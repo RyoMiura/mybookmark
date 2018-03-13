@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+
 import { BookmarkService } from '@app/service/bookmark/bookmark.service';
 import { Router } from '@angular/router';
 import { Bookmark } from '@app/model/bookmark';
@@ -15,6 +16,7 @@ export class AddBookmarkFormItemComponent implements OnInit {
   public bookmarkForm: FormGroup;
   public taglist: Tag[];
   public addedTags: Tag[];
+  public openState: boolean;
 
   constructor(private fb: FormBuilder, private router: Router, private bookmarkService: BookmarkService, private tagService: TagService) {
   }
@@ -24,6 +26,7 @@ export class AddBookmarkFormItemComponent implements OnInit {
     this.getTaglist();
 
     this.addedTags = [];
+    this.openState = false;
   }
 
   onSubmit(): void {
@@ -56,8 +59,8 @@ export class AddBookmarkFormItemComponent implements OnInit {
       .subscribe(tags => this.taglist = tags);
   }
 
-  openAddTagForm(): void {
-
+  toggleAddTagForm(): void {
+    this.openState = !this.openState;
   }
 
   addTag(): void {

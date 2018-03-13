@@ -39,7 +39,7 @@
     <div class="form-group">
       <div class="label-area">
         <label>タグ</label>
-        <span (click)="openAddTagForm()">タグ編集</span>
+        <span (click)="toggleAddTagForm()">タグ編集</span>
       </div>
       <div class="input-area">
         <div class="tag-list">
@@ -49,10 +49,10 @@
             </li>
           </ul>
         </div>
-        <div class="tag-form">
+        <div class="tag-form" *ngIf="openState">
           <div class="add-new-tag">
             <input id="tag" name="tag" type="text" list="taglist" formControlName="tag">
-            <button name="addTag" type="button" (click)="addTag()">追加</button>
+            <button class="normal" name="addTag" type="button" (click)="addTag()">追加</button>
             <datalist id="taglist">
               <option *ngFor="let tag of taglist" value="{{ tag.name }}"></option>
             </datalist>
@@ -60,20 +60,15 @@
           <ul class="edited-tag" *ngFor="let tag of addedTags; let i = index">
             <li>
               <span>{{ tag.name }}</span>
-              <button name="removeTag" type="button" (click)="removeTag(i)">削除</button>
+              <button class="normal" name="removeTag" type="button" (click)="removeTag(i)">削除</button>
             </li>
           </ul>
-          <!-- <input id="tag" name="tag" type="text" list="taglist" formControlName="tag">
-          <datalist id="taglist">
-            <option *ngFor="let tag of taglist" value="{{ tag.name }}"></option>
-          </datalist>
-          <button name="addTag" type="button" (click)="addTag()">add tag</button> -->
         </div>
-
-        <!-- <button name="removeTag" type="button" (click)="removeTag(i)">remove</button> -->
       </div>
     </div>
 
-    <button class="submit" type="submit">submit</button>
+    <div class="form-group">
+      <button class="submit normal" type="submit">submit</button>
+    </div>
   </form>
 </div>
