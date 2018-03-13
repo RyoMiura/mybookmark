@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~assets/scss/palette';
-
-$divider-color:        #BDBDBD;
+@import '~assets/scss/app-conf';
 
 html {
     body {
@@ -9,6 +8,8 @@ html {
         margin: 0;
         padding: 0;
         color: $primary-text-color;
+
+        font-family: $app-font;
 
         $header-padding: 50px;
         header {
@@ -31,5 +32,65 @@ html {
             color: $primary-text-color;
             // background: $primary-color-dark;
         }
+
+        button {
+            border: none;
+            border-radius: 5px;
+            outline: none;
+
+            &.normal {
+                background: $primary-color;
+                color: $primary-color-text;
+
+                &:hover {
+                    background: $primary-color-dark;
+                }
+
+                &.disable {
+                    background: $primary-color-light;
+                }
+            }
+        }
+
+        input[type=text] {
+            box-sizing: border-box;
+            height: 25px;
+            padding: 1px 5px;
+            border: none;
+            border: solid 1px #ccc;
+            border-radius: 3px;
+
+            font-family: $app-font;
+
+            &:focus {
+                border: solid 1px $primary-color;                    
+                outline: none;
+            }
+
+            &.error {
+                border: solid 1px rgba(red, 0.5);                    
+            }
+        }
+
+        textarea {
+            box-sizing: border-box;
+            padding: 3px 5px;
+
+            border: none;
+            border: solid 1px #ccc;
+            border-radius: 3px;
+
+            font-family: $app-font;
+
+            &:focus {
+                border: solid 1px $primary-color;                    
+                outline: none;
+            }
+
+            &.error {
+                border: solid 1px rgba(red, 0.5);                    
+            }            
+        }
+
     }
 }
