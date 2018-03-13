@@ -63,6 +63,10 @@ export class AddBookmarkFormItemComponent implements OnInit {
     this.openState = !this.openState;
   }
 
+  onKeyEnter(event): void {
+    this.addTag();
+  }
+
   addTag(): void {
     var targetTagName: string = this.bookmarkForm.get('tag').value;
     var inputedTag = this.taglist.find(tag => tag.name === targetTagName);
