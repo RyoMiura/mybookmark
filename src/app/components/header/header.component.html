@@ -1,17 +1,21 @@
 <header>
-  <div>
-    <div class="app-title">
-      <a routerLink="/index">MyBookmark</a>
+    <div>
+      <div class="app-title">
+        <a routerLink="/index">MyBookmark</a>
+      </div>
+      <div class="app-menu">
+        <ul>
+          <li>
+            <input type="text" placeholder="search tag">
+          </li>
+          <li>
+            <a routerLink="/add-bookmark">add</a>
+            <!-- <span>add</span> -->
+          </li>
+          <li>
+            <a routerLink="/bookmarks">bookmarks</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="app-menu">
-      <ul>
-        <li>
-          <a routerLink="/bookmarks">show list</a>
-        </li>
-        <li>
-          <a routerLink="/add-bookmark">new list</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</header>
+  </header>

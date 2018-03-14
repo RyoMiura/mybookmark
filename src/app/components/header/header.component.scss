@@ -2,7 +2,7 @@
 
 div {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: center;
     height: 100%;
 
@@ -12,6 +12,9 @@ div {
         a {
             font-size: 25px;
             text-decoration: none;
+
+            cursor: pointer;
+
             &:link {
                 color: $primary-color-text;
             }
@@ -23,6 +26,8 @@ div {
 
     .app-menu {
         
+        padding-left: 20px;
+
         ul {
             display: flex;
             justify-content: space-around;
@@ -31,8 +36,9 @@ div {
             li {
                 list-style-type: none;
                 margin: 0 8px;
-                a {
+                a, span {
                     text-decoration: none;
+                    cursor: pointer;
                     &:link {
                         color: $primary-color-text;
                     }
