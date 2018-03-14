@@ -24,4 +24,15 @@ export class BookmarkService {
     BOOKMARKS.push(bookmark);
     return of(true);
   }
+
+  public removeBookmark(id: number): Observable<boolean> {
+    var index = BOOKMARKS.findIndex(bookmark => bookmark.id === id);
+    if (index !== -1) {
+      BOOKMARKS.splice(index, 1);
+      return of(true);
+    } else {
+      return of(false);
+    }
+    
+  }
 }

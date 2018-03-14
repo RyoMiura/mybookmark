@@ -41,7 +41,7 @@ export class BookmarkFormComponent implements OnInit {
         referedCount: 0
       }
       this.bookmarkService.createBookmark(newBookmark)
-        .subscribe(() => this.router.navigate(["/bookmarks"]));
+        .subscribe(() => this.router.navigate(["/index"]));
     }
   }
 
