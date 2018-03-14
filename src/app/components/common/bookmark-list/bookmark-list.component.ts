@@ -4,12 +4,12 @@ import { Bookmark } from '@app/model/bookmark';
 import { BookmarkService } from '@app/service/bookmark/bookmark.service';
 
 @Component({
-  selector: 'app-bookmark-list-item',
-  templateUrl: './bookmark-list-item.component.html',
-  styleUrls: ['./bookmark-list-item.component.scss']
+  selector: 'app-bookmark-list',
+  templateUrl: './bookmark-list.component.html',
+  styleUrls: ['./bookmark-list.component.scss']
 })
 
-export class BookmarkListItemComponent implements OnInit {
+export class BookmarkListComponent implements OnInit {
   public bookmarks: Bookmark[];
 
   constructor(private bookmarkService: BookmarkService) { }

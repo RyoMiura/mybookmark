@@ -12,10 +12,9 @@ import { HeaderComponent } from '@app/components/header/header.component';
 import { FooterComponent } from '@app/components/footer/footer.component';
 import { StartPageComponent } from '@app/components/start-page/start-page.component';
 import { BookmarkPageComponent } from '@app/components/bookmark-page/bookmark-page.component';
-import { BookmarkItemComponent } from '@app/components/bookmark-item/bookmark-item.component';
-import { BookmarkListItemComponent } from '@app/components/bookmark-list-item/bookmark-list-item.component';
+import { BookmarkItemComponent } from '@app/components/common/bookmark-item/bookmark-item.component';
+import { BookmarkListComponent } from '@app/components/common/bookmark-list/bookmark-list.component';
 import { AddBookmarkPageComponent } from './components/add-bookmark-page/add-bookmark-page.component';
-import { AddBookmarkFormItemComponent } from './components/add-bookmark-form-item/add-bookmark-form-item.component';
 import { TagListComponent } from './components/common/tag-list/tag-list.component';
 import { BookmarkFormComponent } from './components/common/bookmark-form/bookmark-form.component';
 import { TagFormComponent } from './components/common/tag-form/tag-form.component';
@@ -29,9 +28,8 @@ import { TagFormComponent } from './components/common/tag-form/tag-form.componen
     StartPageComponent,
     BookmarkPageComponent,
     BookmarkItemComponent,
-    BookmarkListItemComponent,
+    BookmarkListComponent,
     AddBookmarkPageComponent,
-    AddBookmarkFormItemComponent,
     TagListComponent,
     BookmarkFormComponent,
     TagFormComponent,
