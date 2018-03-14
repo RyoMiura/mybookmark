@@ -1,0 +1,69 @@
+<form [formGroup]="bookmarkForm" autocomplete="off">
+
+    <div class="form-group">
+      <div class="label-area">
+        <label for="title">タイトル</label>
+      </div>
+      <div class="input-area">
+        <input id="title" name="title" type="text" formControlName="title" placeholder="MyBookmark" [class.error]="bookmarkForm.get('title').invalid && (bookmarkForm.get('title').dirty || bookmarkForm.get('title').touched)">
+      </div>
+      <div *ngIf="bookmarkForm.get('title').invalid && (bookmarkForm.get('title').dirty || bookmarkForm.get('title').touched)">
+        <!-- error message etc. -->
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="label-area">
+        <label for="url">URL</label>
+      </div>
+      <div class="input-area">
+        <input id="url" name="url" type="text" formControlName="url" placeholder="http://mybookmark.com" [class.error]="bookmarkForm.get('url').invalid && (bookmarkForm.get('url').dirty || bookmarkForm.get('url').touched)">
+      </div>
+      <div *ngIf="bookmarkForm.get('url').invalid && (bookmarkForm.get('url').dirty || bookmarkForm.get('url').touched)">
+        <!-- error message etc. -->
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="label-area">
+        <label for="overview">概要</label>
+      </div>
+      <div class="input-area">
+        <textarea id="overview" name="overview" formControlName="overview" [class.error]="bookmarkForm.get('overview').invalid && (bookmarkForm.get('overview').dirty || bookmarkForm.get('overview').touched)"></textarea>
+      </div>
+      <div *ngIf="bookmarkForm.get('overview').invalid && (bookmarkForm.get('overview').dirty || bookmarkForm.get('overview').touched)">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="label-area">
+        <label>タグ</label>
+        <span (click)="toggleAddTagForm()">タグ編集</span>
+      </div>
+
+      <div class="input-area">
+        <app-tag-list [tags]="addedTags"></app-tag-list>
+
+        <div class="tag-form" *ngIf="openState">
+          <app-tag-form></app-tag-form>
+          <!-- <div class="add-new-tag">
+            <input id="tag" name="tag" type="text" list="taglist" formControlName="tag" (keyup.enter)="onKeyEnter($event)">
+            <button class="normal" name="addTag" type="button" (click)="addTag()">追加</button>
+            <datalist id="taglist">
+              <option *ngFor="let tag of taglist" value="{{ tag.name }}"></option>
+            </datalist>
+          </div>
+          <ul class="edited-tag" *ngFor="let tag of addedTags; let i = index">
+            <li>
+              <span>{{ tag.name }}</span>
+              <button class="normal" name="removeTag" type="button" (click)="removeTag(i)">削除</button>
+            </li>
+          </ul> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="submit normal" type="button" (click)="onSubmit()">submit</button>
+    </div>
+  </form>

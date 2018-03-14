@@ -16,6 +16,9 @@ import { BookmarkItemComponent } from '@app/components/bookmark-item/bookmark-it
 import { BookmarkListItemComponent } from '@app/components/bookmark-list-item/bookmark-list-item.component';
 import { AddBookmarkPageComponent } from './components/add-bookmark-page/add-bookmark-page.component';
 import { AddBookmarkFormItemComponent } from './components/add-bookmark-form-item/add-bookmark-form-item.component';
+import { TagListComponent } from './components/common/tag-list/tag-list.component';
+import { BookmarkFormComponent } from './components/common/bookmark-form/bookmark-form.component';
+import { TagFormComponent } from './components/common/tag-form/tag-form.component';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { AddBookmarkFormItemComponent } from './components/add-bookmark-form-ite
     BookmarkListItemComponent,
     AddBookmarkPageComponent,
     AddBookmarkFormItemComponent,
+    TagListComponent,
+    BookmarkFormComponent,
+    TagFormComponent,
   ],
   imports: [
     BrowserModule,

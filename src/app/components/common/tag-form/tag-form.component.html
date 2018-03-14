@@ -1,0 +1,15 @@
+<div class="tag-form">
+  <div class="input-tag">
+    <input type="text" [(ngModel)]="input" list="taglist" (keyup.enter)="onKeyEnter($event)">
+    <datalist id="taglist">
+      <option *ngFor="let tag of selectList" value="{{ tag.name }}"></option>
+    </datalist>
+    <button class="normal" name="addTag" type="button" (click)="addTag()">追加</button>
+  </div>
+  <ul class="added-taglist" *ngFor="let tag of tags; let i = index">
+    <li>
+      <span>{{ tag.name }}</span>
+      <button class="normal" name="removeTag" type="button" (click)="removeTag(i)">削除</button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,38 @@
+@import '~assets/scss/palette';
+
+.tag-list {
+    ul {
+        display: inline-flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            margin: 2px 5px;
+        }
+
+        a {
+            display: block;
+            padding: 2px;
+
+            border: solid 1px $primary-color;
+            border-radius: 12px;
+
+            font-size: 13px;
+            color: $primary-color;
+
+            text-decoration: none;
+            &[href]:link {
+                color: $primary-color;
+            }
+            &[href]:visited {
+                color: $primary-color;                    
+            }
+            &[href]:hover {
+                background: $primary-color;
+                color: $primary-color-text;
+            }
+        }
+    }
+}

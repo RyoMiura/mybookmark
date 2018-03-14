@@ -1,11 +1,7 @@
 <div class="bookmark-content">
   <a class="link" href="{{ bookmark.url }}" target="_blank">{{ bookmark.title }}</a>
   <p class="url-path">{{ bookmark.url }}</p>
-  <ul class="tag">
-    <li *ngFor="let tag of bookmark.tags">
-      <a href="">{{ tag.name }}</a>
-    </li>
-  </ul>
+  <app-tag-list [tags]="bookmark.tags" [linkPath]="'/bookmarks'"></app-tag-list>
   <div class="more-detail">
     <p>{{ bookmark.overview }}</p>
   </div>
