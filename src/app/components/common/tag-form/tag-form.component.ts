@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Tag } from '@app/model/tag';
 import { TagService } from '@app/service/tag/tag.service';
 
@@ -9,14 +9,16 @@ import { TagService } from '@app/service/tag/tag.service';
 })
 export class TagFormComponent implements OnInit {
 
+  @Input() tags: Tag[];
+  @Output() addTag = new EventEmitter<Tag>();
+  @Output() removeTag = new EventEmitter<number>();
+
   public input: string;
-  public tags: Tag[];
   public selectList: Tag[];
 
   constructor(private tagService: TagService) { }
 
   ngOnInit() {
-    this.tags = [];
     this.getTagList();
   }
 
@@ -26,19 +28,18 @@ export class TagFormComponent implements OnInit {
   }
 
   onKeyEnter(event): void {
-    this.addTag();
+    this.add();
   }
 
-  addTag(): void {
+  add(): void {
     var inputedTag = this.selectList.find(tag => tag.name === this.input);
-    var sameAddedTag = this.tags.find(tag => tag.name === this.input);
-    if (inputedTag && !sameAddedTag) {
-      this.tags.push(inputedTag);
+    if (inputedTag) {
+      this.addTag.emit(inputedTag);
     }
     this.input = '';
   }
 
-  removeTag(index: number) {
-    this.tags.splice(index, 1);
+  remove(index: number) {    
+    this.removeTag.emit(index);
   }
 }

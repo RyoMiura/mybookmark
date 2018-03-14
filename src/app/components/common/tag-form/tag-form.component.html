@@ -4,12 +4,12 @@
     <datalist id="taglist">
       <option *ngFor="let tag of selectList" value="{{ tag.name }}"></option>
     </datalist>
-    <button class="normal" name="addTag" type="button" (click)="addTag()">追加</button>
+    <button class="normal" name="addTag" type="button" (click)="add()">追加</button>
   </div>
   <ul class="added-taglist" *ngFor="let tag of tags; let i = index">
     <li>
       <span>{{ tag.name }}</span>
-      <button class="normal" name="removeTag" type="button" (click)="removeTag(i)">削除</button>
+      <button class="normal" name="removeTag" type="button" (click)="remove(i)">削除</button>
     </li>
   </ul>
 </div>

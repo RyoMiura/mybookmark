@@ -8,8 +8,6 @@ import { Bookmark } from '@app/model/bookmark';
 import { Tag } from '@app/model/tag';
 import { TagService } from '@app/service/tag/tag.service';
 
-import { TagFormComponent } from '@app/components/common/tag-form//tag-form.component';
-
 @Component({
   selector: 'app-bookmark-form',
   templateUrl: './bookmark-form.component.html',
@@ -17,11 +15,7 @@ import { TagFormComponent } from '@app/components/common/tag-form//tag-form.comp
 })
 export class BookmarkFormComponent implements OnInit {
 
-  @ViewChild(TagFormComponent)
-  public tagFormComponent: TagFormComponent;
-
   public bookmarkForm: FormGroup;
-  public taglist: Tag[];
   public addedTags: Tag[];
   public openState: boolean;
 
@@ -30,7 +24,6 @@ export class BookmarkFormComponent implements OnInit {
 
   ngOnInit() {
     this.formBuild();
-    this.getTaglist();
 
     this.addedTags = [];
     this.openState = false;
@@ -61,32 +54,15 @@ export class BookmarkFormComponent implements OnInit {
     });
   }
 
-  getTaglist(): void {
-    this.tagService.findTags()
-      .subscribe(tags => this.taglist = tags);
-  }
-
   toggleAddTagForm(): void {
     this.openState = !this.openState;
   }
 
-  onKeyEnter(event): void {
-    this.addTag();
-  }
-
-  getAddedTags(): Tag[] {
-    console.log(this.tagFormComponent);
-    return this.tagFormComponent.tags;
-  }
-
-  addTag(): void {
-    var targetTagName: string = this.bookmarkForm.get('tag').value;
-    var inputedTag = this.taglist.find(tag => tag.name === targetTagName);
-    var sameAddedTag = this.addedTags.find(tag => tag.name === targetTagName);
-    if (inputedTag && !sameAddedTag) {
-      this.addedTags.push(inputedTag);
+  addTag(tag: Tag): void {
+    var sameAddedTag = this.addedTags.find(added => added.name === tag.name);
+    if (!sameAddedTag) {
+      this.addedTags.push(tag);
     }
-    this.bookmarkForm.get('tag').reset();
   }
 
   removeTag(index: number) {

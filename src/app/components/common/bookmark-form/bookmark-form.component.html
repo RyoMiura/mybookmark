@@ -45,20 +45,7 @@
         <app-tag-list [tags]="addedTags"></app-tag-list>
 
         <div class="tag-form" *ngIf="openState">
-          <app-tag-form></app-tag-form>
-          <!-- <div class="add-new-tag">
-            <input id="tag" name="tag" type="text" list="taglist" formControlName="tag" (keyup.enter)="onKeyEnter($event)">
-            <button class="normal" name="addTag" type="button" (click)="addTag()">追加</button>
-            <datalist id="taglist">
-              <option *ngFor="let tag of taglist" value="{{ tag.name }}"></option>
-            </datalist>
-          </div>
-          <ul class="edited-tag" *ngFor="let tag of addedTags; let i = index">
-            <li>
-              <span>{{ tag.name }}</span>
-              <button class="normal" name="removeTag" type="button" (click)="removeTag(i)">削除</button>
-            </li>
-          </ul> -->
+          <app-tag-form [tags]="addedTags" (addTag)="addTag($event)" (removeTag)="removeTag($event)"></app-tag-form>
         </div>
       </div>
     </div>
