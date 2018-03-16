@@ -42,10 +42,10 @@
       </div>
 
       <div class="input-area">
-        <app-tag-list [tags]="addedTags"></app-tag-list>
+        <app-tag-list [tags]="bookmarkForm.get('tags').value"></app-tag-list>
 
         <div class="tag-form" *ngIf="openState">
-          <app-tag-form [tags]="addedTags" (addTag)="addTag($event)" (removeTag)="removeTag($event)"></app-tag-form>
+          <app-tag-form [tags]="bookmarkForm.get('tags').value" (addTag)="addTag($event)" (removeTag)="removeTag($event)"></app-tag-form>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 import { BookmarkService } from '@app/service/bookmark/bookmark.service';
@@ -13,10 +13,12 @@ import { TagService } from '@app/service/tag/tag.service';
   templateUrl: './bookmark-form.component.html',
   styleUrls: ['./bookmark-form.component.scss']
 })
-export class BookmarkFormComponent implements OnInit {
+export class BookmarkFormComponent implements OnInit, OnChanges {
+
+  @Input() initValue: Bookmark;
+  @Output() submit = new EventEmitter<Bookmark>();
 
   public bookmarkForm: FormGroup;
-  public addedTags: Tag[];
   public openState: boolean;
 
   constructor(private fb: FormBuilder, private router: Router, private bookmarkService: BookmarkService, private tagService: TagService) {
@@ -25,23 +27,22 @@ export class BookmarkFormComponent implements OnInit {
   ngOnInit() {
     this.formBuild();
 
-    this.addedTags = [];
     this.openState = false;
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes.initValue.isFirstChange());
+    if (!changes.initValue.isFirstChange()) {
+      this.setInitialValue();
+      console.log(this.initValue);
+    }
+  }
+
   onSubmit(): void {
-    console.log(this.bookmarkForm.valid);
     if (this.bookmarkForm.valid) {
-      var newBookmark: Bookmark = {
-        id: null,
-        title: this.bookmarkForm.get('title').value,
-        url: this.bookmarkForm.get('url').value,
-        overview: this.bookmarkForm.get('overview').value,
-        tags: this.addedTags,
-        referedCount: 0
-      }
-      this.bookmarkService.createBookmark(newBookmark)
-        .subscribe(() => this.router.navigate(["/index"]));
+      this.submit.emit(this.bookmarkForm.value);
+      // this.bookmarkService.createBookmark(this.bookmarkForm.value)
+      //   .subscribe(() => this.router.navigate(["/index"]));
     }
   }
 
@@ -50,8 +51,17 @@ export class BookmarkFormComponent implements OnInit {
       title: ['', [Validators.required, Validators.maxLength(50)]],
       url: ['', [Validators.required]],
       overview: ['', [Validators.maxLength(300)]],
-      tag: ['', []]
+      tags: [[], []]
     });
+  }
+
+  setInitialValue(): void {
+    if (this.initValue) {
+      this.bookmarkForm.get('title').setValue(this.initValue.title);
+      this.bookmarkForm.get('url').setValue(this.initValue.url);
+      this.bookmarkForm.get('overview').setValue(this.initValue.overview);
+      this.bookmarkForm.get('tags').setValue(this.initValue.tags);
+    }
   }
 
   toggleAddTagForm(): void {
@@ -59,14 +69,14 @@ export class BookmarkFormComponent implements OnInit {
   }
 
   addTag(tag: Tag): void {
-    var sameAddedTag = this.addedTags.find(added => added.name === tag.name);
+    var sameAddedTag = this.bookmarkForm.get('tags').value.find(added => added.name === tag.name);
     if (!sameAddedTag) {
-      this.addedTags.push(tag);
+      this.bookmarkForm.get('tags').value.push(tag);
     }
   }
 
   removeTag(index: number) {
-    this.addedTags.splice(index, 1);
+    this.bookmarkForm.get('tags').value.splice(index, 1);
   }
 
 }
