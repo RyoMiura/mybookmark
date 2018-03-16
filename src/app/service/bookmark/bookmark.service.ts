@@ -25,6 +25,12 @@ export class BookmarkService {
     return of(true);
   }
 
+  public updateBookmark(id: number, bookmark: Bookmark): Observable<boolean> {
+    var index = BOOKMARKS.findIndex(storedBookmark => storedBookmark.id === id);
+    BOOKMARKS[index] = bookmark;
+    return of(true);
+  }
+
   public removeBookmark(id: number): Observable<boolean> {
     var index = BOOKMARKS.findIndex(bookmark => bookmark.id === id);
     if (index !== -1) {
@@ -33,6 +39,5 @@ export class BookmarkService {
     } else {
       return of(false);
     }
-    
   }
 }

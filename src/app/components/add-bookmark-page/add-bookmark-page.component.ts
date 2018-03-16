@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BookmarkService } from '@app/service/bookmark/bookmark.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-bookmark-page',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddBookmarkPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private bookmarkService: BookmarkService) { }
 
   ngOnInit() {
+  }
+
+  createBookmark(bookmark): void {
+      this.bookmarkService.createBookmark(bookmark)
+        .subscribe(() => this.router.navigate(["/index"]));
   }
 
 }

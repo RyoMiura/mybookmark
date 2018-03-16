@@ -23,4 +23,5 @@ export class BookmarkItemComponent implements OnInit {
     this.bookmarkService.removeBookmark(id)
       .subscribe(() => this.router.navigate(["/index"]));
   }
+  
 }

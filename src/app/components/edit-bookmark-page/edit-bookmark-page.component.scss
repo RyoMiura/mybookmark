@@ -1,0 +1,9 @@
+@import '~assets/scss/palette';
+
+div.frame {
+    width: 60%;
+    margin: 80px auto 50px auto;
+    padding: 10px 10px;
+
+    box-shadow: 2px 2px 2px 4px rgba($divider-color, 0.5);    
+}
