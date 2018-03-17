@@ -6,7 +6,7 @@
       <div class="app-menu">
         <ul>
           <li>
-            <input type="text" placeholder="search tag">
+            <input type="text" [(ngModel)]="searchText" placeholder="search tag" (keyup.enter)="goSearch($event)">
           </li>
           <li>
             <a routerLink="/bookmarks/create">add</a>
