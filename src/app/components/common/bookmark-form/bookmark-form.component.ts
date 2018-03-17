@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+=======
+import { Component, OnInit, AfterViewInit, ViewChild, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+>>>>>>> develop
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 import { Bookmark } from '@app/model/bookmark';
@@ -37,6 +41,11 @@ export class BookmarkFormComponent implements OnInit, OnChanges {
   onSubmit(): void {
     if (this.bookmarkForm.valid) {
       this.submit.emit(this.bookmarkForm.value);
+<<<<<<< HEAD
+=======
+      // this.bookmarkService.createBookmark(this.bookmarkForm.value)
+      //   .subscribe(() => this.router.navigate(["/index"]));
+>>>>>>> develop
     }
   }
 
