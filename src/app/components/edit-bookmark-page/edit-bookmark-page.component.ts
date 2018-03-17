@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookmarkService } from '@app/service/bookmark/bookmark.service';
 import { Bookmark } from '@app/model/bookmark';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-bookmark-page',
@@ -13,10 +13,11 @@ export class EditBookmarkPageComponent implements OnInit {
   public id: number;
   public bookmark: Bookmark;
 
-  constructor(private router: Router, private bookmarkService: BookmarkService) { }
+  constructor(private router: Router, private activateRoute: ActivatedRoute, private bookmarkService: BookmarkService) { }
 
   ngOnInit() {
-    this.id = 0;
+    this.id = +this.activateRoute.snapshot.paramMap.get('bookmarkId');
+    // this.id = 0;
     this.getBookmark(this.id);
   }
 

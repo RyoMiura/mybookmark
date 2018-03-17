@@ -20,7 +20,7 @@ const routes: Routes = [
     component: AddBookmarkPageComponent
   },
   {
-    path: 'edit-bookmark',
+    path: 'edit-bookmark/:bookmarkId',
     component: EditBookmarkPageComponent
   }
 ];
