@@ -1,12 +1,8 @@
-import { Component, OnInit, AfterViewInit, ViewChild, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
-
-import { BookmarkService } from '@app/service/bookmark/bookmark.service';
-import { Router } from '@angular/router';
 
 import { Bookmark } from '@app/model/bookmark';
 import { Tag } from '@app/model/tag';
-import { TagService } from '@app/service/tag/tag.service';
 
 @Component({
   selector: 'app-bookmark-form',
@@ -21,7 +17,7 @@ export class BookmarkFormComponent implements OnInit, OnChanges {
   public bookmarkForm: FormGroup;
   public openState: boolean;
 
-  constructor(private fb: FormBuilder, private router: Router, private bookmarkService: BookmarkService, private tagService: TagService) {
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -41,8 +37,6 @@ export class BookmarkFormComponent implements OnInit, OnChanges {
   onSubmit(): void {
     if (this.bookmarkForm.valid) {
       this.submit.emit(this.bookmarkForm.value);
-      // this.bookmarkService.createBookmark(this.bookmarkForm.value)
-      //   .subscribe(() => this.router.navigate(["/index"]));
     }
   }
 
