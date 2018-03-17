@@ -1,7 +1,9 @@
 <div class="bookmark-content">
-  <button class="remove" (click)="removeBookmark(bookmark.id)">×</button>
-  <button class="remove" (click)="editBookmark(bookmark.id)">edit</button>
-  <a class="link" href="{{ bookmark.url }}" target="_blank">{{ bookmark.title }}</a>
+  <div class="header">
+    <a class="link" href="{{ bookmark.url }}" target="_blank">{{ bookmark.title }}</a>
+    <button class="edit" (click)="editBookmark(bookmark.id)">edit</button>
+    <button class="remove" (click)="removeBookmark(bookmark.id)">remove</button>
+  </div>
   <p class="url-path">{{ bookmark.url }}</p>
   <app-tag-list [tags]="bookmark.tags" [isLink]="true"></app-tag-list>
   <div class="more-detail">
