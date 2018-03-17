@@ -9,7 +9,7 @@ import { Tag } from '@app/model/tag';
 export class TagListComponent implements OnInit {
 
   @Input() tags: Tag[];
-  @Input() linkPath: string;
+  @Input() isLink: boolean;
 
   constructor() { }
 

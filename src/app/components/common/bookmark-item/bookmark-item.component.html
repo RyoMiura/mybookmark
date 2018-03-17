@@ -3,7 +3,7 @@
   <button class="remove" (click)="editBookmark(bookmark.id)">edit</button>
   <a class="link" href="{{ bookmark.url }}" target="_blank">{{ bookmark.title }}</a>
   <p class="url-path">{{ bookmark.url }}</p>
-  <app-tag-list [tags]="bookmark.tags" [linkPath]="'/bookmarks'"></app-tag-list>
+  <app-tag-list [tags]="bookmark.tags" [isLink]="true"></app-tag-list>
   <div class="more-detail">
     <p>{{ bookmark.overview }}</p>
   </div>

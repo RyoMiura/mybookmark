@@ -1,8 +1,8 @@
 <div class="tag-list">
   <ul>
     <li *ngFor="let tag of tags">
-      <a *ngIf="linkPath !== undefined" href="{{linkPath}}">{{ tag.name }}</a>
-      <a *ngIf="linkPath === undefined">{{ tag.name }}</a>
+      <a *ngIf="isLink" routerLink="/bookmarks/search" [queryParams]="{tag: tag.id}">{{ tag.name }}</a>
+      <a *ngIf="!isLink">{{ tag.name }}</a>
     </li>
   </ul>
 </div>

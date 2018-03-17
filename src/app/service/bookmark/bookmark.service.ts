@@ -15,6 +15,12 @@ export class BookmarkService {
     return of(BOOKMARKS);
   }
 
+  public findBookmarksByTag(id: number): Observable<Bookmark[]> {
+    return of(BOOKMARKS.filter(bookmark => 
+      (bookmark.tags.find(tag => tag.id === id) !== undefined)
+    ));
+  }
+
   public findBookmark(id: number): Observable<Bookmark> {
     return of(BOOKMARKS.find(bookmark => bookmark.id === id));
   }
