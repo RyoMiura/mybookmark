@@ -21,20 +21,8 @@ export class EditBookmarkPageComponent implements OnInit {
   }
 
   getBookmark(id: number) {
-<<<<<<< HEAD
-    // this.bookmarkService.findBookmark(id)
-    //   .subscribe(bookmark => this.bookmark = bookmark);
-    var this_ = this;
-    this.bookmarkService.findBookmark(id)
-      .subscribe(function(bookmark) {
-        setTimeout(function(){
-          this_.bookmark = bookmark;          
-        }, 3000);
-      });
-=======
     this.bookmarkService.findBookmark(id)
       .subscribe(bookmark => this.bookmark = bookmark);
->>>>>>> develop
   }
 
   updateBookmark(bookmark: Bookmark) {
