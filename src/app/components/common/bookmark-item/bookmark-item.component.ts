@@ -25,6 +25,6 @@ export class BookmarkItemComponent implements OnInit {
   }
   
   editBookmark(id: number): void {
-    this.router.navigate(["/edit-bookmark", id]);
+    this.router.navigate(["/bookmarks/edit", id]);
   }
 }

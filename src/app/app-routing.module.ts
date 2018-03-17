@@ -12,17 +12,17 @@ const routes: Routes = [
     component: StartPageComponent
   },
   {
-    path: 'bookmarks',
+    path: 'bookmarks/search',
     component: BookmarkPageComponent
   },
   {
-    path: 'add-bookmark',
+    path: 'bookmarks/create',
     component: AddBookmarkPageComponent
   },
   {
-    path: 'edit-bookmark/:bookmarkId',
+    path: 'bookmarks/edit/:bookmarkId',
     component: EditBookmarkPageComponent
-  }
+  },
 ];
 
 @NgModule({
