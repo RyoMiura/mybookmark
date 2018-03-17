@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Bookmark } from '@app/model/bookmark';
 import { BookmarkService } from '@app/service/bookmark/bookmark.service';
@@ -10,17 +10,11 @@ import { BookmarkService } from '@app/service/bookmark/bookmark.service';
 })
 
 export class BookmarkListComponent implements OnInit {
-  public bookmarks: Bookmark[];
+
+  @Input() bookmarks: Bookmark[];
 
   constructor(private bookmarkService: BookmarkService) { }
 
   ngOnInit() {
-    this.getBookmarks();
   }
-
-  private getBookmarks(): void {
-    this.bookmarkService.findBookmarks()
-      .subscribe(bookmarks => this.bookmarks = bookmarks);
-  }
-
 }
