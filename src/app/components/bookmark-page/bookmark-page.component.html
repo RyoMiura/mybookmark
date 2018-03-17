@@ -1,7 +1,9 @@
 <main>
   <div class="main-content">
     <div class="box-header">
-      <h1>検索結果</h1>
+      <input type="text" [(ngModel)]="searchText" placeholder="search word" (keyup.enter)="goSearch($event)">
+      <button class="normal" (click)="goSearch($event)">検索</button>
+      <!-- <h1>検索結果</h1> -->
     </div>
     <div class="box-content">
       <div *ngIf="bookmarks.length; then thenBlock; else elseBlock"></div>
@@ -9,7 +11,13 @@
         <app-bookmark-list [bookmarks]="bookmarks"></app-bookmark-list>
       </ng-template>
       <ng-template #elseBlock>
-        not found contents
+        <div *ngIf="!isSearch; then beforeBlock; else afterBlock"></div>
+        <ng-template #beforeBlock>
+          <div class="message"><p>search results are shown here</p></div>
+        </ng-template>
+        <ng-template #afterBlock>
+          <div class="message"><p>sorry, not found searched contetns</p></div>
+        </ng-template>
       </ng-template>
     </div>
   </div>
