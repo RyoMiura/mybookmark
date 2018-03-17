@@ -22,16 +22,20 @@ export class BookmarkFormComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.formBuild();
+    if (this.initValue) {
+      this.setInitialValue(this.initValue);
+    }
 
     this.openState = false;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes.initValue.isFirstChange());
-    if (!changes.initValue.isFirstChange()) {
-      this.setInitialValue();
-      console.log(this.initValue);
-    }
+    // console.log(changes.initValue.isFirstChange());
+    // console.log(this.initValue);
+    // this.formBuild();
+    // if (this.initValue) {
+    //   this.setInitialValue(this.initValue);
+    // }
   }
 
   onSubmit(): void {
@@ -49,13 +53,11 @@ export class BookmarkFormComponent implements OnInit, OnChanges {
     });
   }
 
-  setInitialValue(): void {
-    if (this.initValue) {
-      this.bookmarkForm.get('title').setValue(this.initValue.title);
-      this.bookmarkForm.get('url').setValue(this.initValue.url);
-      this.bookmarkForm.get('overview').setValue(this.initValue.overview);
-      this.bookmarkForm.get('tags').setValue(this.initValue.tags);
-    }
+  setInitialValue(initValue): void {
+    this.bookmarkForm.get('title').setValue(initValue.title);
+    this.bookmarkForm.get('url').setValue(initValue.url);
+    this.bookmarkForm.get('overview').setValue(initValue.overview);
+    this.bookmarkForm.get('tags').setValue(initValue.tags);
   }
 
   toggleAddTagForm(): void {
