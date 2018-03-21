@@ -3,7 +3,6 @@
     <div class="box-header">
       <input type="text" [(ngModel)]="searchText" placeholder="search word" (keyup.enter)="goSearch($event)">
       <button class="normal" (click)="goSearch($event)">検索</button>
-      <!-- <h1>検索結果</h1> -->
     </div>
     <div class="box-content">
       <div *ngIf="bookmarks.length; then thenBlock; else elseBlock"></div>
