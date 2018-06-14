@@ -19,6 +19,7 @@ import { TagListComponent } from './components/common/tag-list/tag-list.componen
 import { BookmarkFormComponent } from './components/common/bookmark-form/bookmark-form.component';
 import { TagFormComponent } from './components/common/tag-form/tag-form.component';
 import { EditBookmarkPageComponent } from './components/edit-bookmark-page/edit-bookmark-page.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { EditBookmarkPageComponent } from './components/edit-bookmark-page/edit-
     BookmarkFormComponent,
     TagFormComponent,
     EditBookmarkPageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

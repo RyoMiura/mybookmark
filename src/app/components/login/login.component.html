@@ -1,0 +1,17 @@
+<main>
+  <form [formGroup]="loginForm" autocomplete="off">
+    <div>
+      <label for="username">username</label>
+    </div>
+    <div>
+      <input id="username" name="username" type="text" formControlName="username" [class.error]="loginForm.get('username').invalid && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+    </div>
+    <div>
+        <label for="password">password</label>
+      </div>
+      <div>
+        <input id="password" name="password" type="text" formControlName="password" [class.error]="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+      </div>
+      <button class="submit normal" type="button" (click)="onSubmit()">login</button>
+  </form>
+</main>
